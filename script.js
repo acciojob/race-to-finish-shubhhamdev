@@ -1,13 +1,18 @@
-const promises = [];
+// Array of promises that resolve with random times between 1 and 5 seconds
+const promises = [
+    new Promise(resolve => setTimeout(() => resolve("Promise 1"), Math.random() * 4000 + 1000)),
+    new Promise(resolve => setTimeout(() => resolve("Promise 2"), Math.random() * 4000 + 1000)),
+    new Promise(resolve => setTimeout(() => resolve("Promise 3"), Math.random() * 4000 + 1000)),
+    new Promise(resolve => setTimeout(() => resolve("Promise 4"), Math.random() * 4000 + 1000)),
+    new Promise(resolve => setTimeout(() => resolve("Promise 5"), Math.random() * 4000 + 1000))
+];
 
-for (let i = 0; i < 5; i++) {
-  promises.push(new Promise((resolve, reject) => {
-    setTimeout(() => {
-      resolve(i);
-    }, Math.random() * 5000);
-  }));
-}
-
-Promise.any(promises).then((result) => {
-  document.querySelector('#output').innerHTML = result;
-});
+// Using Promise.any() to wait for the first resolved promise
+Promise.any(promises)
+    .then(result => {
+        const outputDiv = document.getElementById("output");
+        outputDiv.textContent = result;
+    })
+    .catch(error => {
+        console.error("An error occurred:", error);
+    });
