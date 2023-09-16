@@ -12,7 +12,8 @@ Promise.any(promises)
     .then(result => {
         const outputDiv = document.getElementById("output");
         outputDiv.textContent = result;
+		console.log(outputDiv);
     })
-    .catch(error => {
-        console.error("An error occurred:", error);
-    });
+    // .catch(error => {
+    //     console.error("An error occurred:", error);
+    // });
