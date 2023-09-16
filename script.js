@@ -14,6 +14,6 @@ Promise.any(promises)
         outputDiv.textContent = result;
 		console.log(outputDiv);
     })
-    // .catch(error => {
-    //     console.error("An error occurred:", error);
-    // });
+    .catch(error => {
+        console.error("An error occurred:", error);
+    });
